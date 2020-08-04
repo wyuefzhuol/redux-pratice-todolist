@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 class TodoInput extends Component {
     addItem = () => {
         let inputString = {
-            todoText: document.getElementById('inputString').value,
-            isDo: false
+            content: document.getElementById('inputString').value,
+            status: false
         }
         if (document.getElementById('inputString').value !== '') {
             this.props.addItem(inputString);

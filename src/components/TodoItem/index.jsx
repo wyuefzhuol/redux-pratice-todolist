@@ -13,8 +13,8 @@ class TodoItem extends Component {
 
     render() {
         return (<div>
-            <label style={{ textDecorationLine: this.props.stringItem.isDo ? 'line-through' : 'none' }} 
-                onClick={this.makeTodo}>{this.props.stringItem.todoText}</label>
+            <label style={{ textDecorationLine: this.props.stringItem.status ? 'line-through' : 'none' }} 
+                onClick={this.makeTodo}>{this.props.stringItem.content}</label>
             <button onClick={this.deleteItem}>×</button>
         </div>)
     }

@@ -1,4 +1,4 @@
-import { ADD_STRING, DELETE_STRING, MAKE_TODO } from '../action/actionTypes'
+import { ADD_STRING, DELETE_STRING, MAKE_TODO, GET_TODO_LIST } from '../action/actionTypes'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initializeState = {
@@ -10,8 +10,9 @@ export default createReducer (initializeState, {
     [DELETE_STRING]: ((state, action) => ({ stringList: state.stringList.filter((item, index) => index !== action.payload.index) })),
     [MAKE_TODO]: ((state, action) => ({ stringList: state.stringList.map((item, index) => {
         if (index === action.payload.index) {
-            return {...item, isDo:!item.isDo}
+            return {...item, status:!item.status}
         }
         return item;
-    }) }))
+    }) })),
+    [GET_TODO_LIST]: ((state, action) => ({ stringList: action.payload.todoList.map((item, index) => item) }))
 })
