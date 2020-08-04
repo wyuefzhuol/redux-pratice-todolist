@@ -6,7 +6,7 @@ class TodoList extends Component {
     render() {
 
         return (<div>
-            { this.props.stringList.map((item, index) => <TodoItem stringItem={item} key={index}/>) }
+            { this.props.stringList.map((item, index) => <TodoItem stringItem={item} stringIndex={index} key={index}/>) }
         </div>)
     }
 }
