@@ -4,11 +4,18 @@ import { connect } from 'react-redux'
 
 class TodoInput extends Component {
     addItem = () => {
-        this.props.addItem(document.getElementById('inputString').value)
+        let inputString = document.getElementById('inputString').value;
+        if (inputString !== '') {
+            this.props.addItem(inputString);
+            document.getElementById('inputString').value = '';
+        } else {
+            alert('请输入后再点击添加！');
+        }
     }
 
     render() {
         return (<div>
+            <label>请输入要添加的内容：</label>
             <input id="inputString"/>
             <button onClick={this.addItem}>add</button>
         </div>)

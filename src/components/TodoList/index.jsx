@@ -6,6 +6,7 @@ class TodoList extends Component {
     render() {
 
         return (<div>
+            <label>已添加的内容如下：</label>
             { this.props.stringList.map((item, index) => <TodoItem stringItem={item} stringIndex={index} key={index}/>) }
         </div>)
     }
