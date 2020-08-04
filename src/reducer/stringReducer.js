@@ -10,7 +10,7 @@ export default createReducer (initializeState, {
     [DELETE_STRING]: ((state, action) => ({ stringList: state.stringList.filter((item, index) => index !== action.payload.index) })),
     [MAKE_TODO]: ((state, action) => ({ stringList: state.stringList.map((item, index) => {
         if (index === action.payload.index) {
-            return {...item, isdo:!item.isdo}
+            return {...item, isDo:!item.isDo}
         }
         return item;
     }) }))

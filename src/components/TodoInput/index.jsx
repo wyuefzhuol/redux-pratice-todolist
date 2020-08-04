@@ -6,9 +6,8 @@ class TodoInput extends Component {
     addItem = () => {
         let inputString = {
             todoText: document.getElementById('inputString').value,
-            isdo: false
+            isDo: false
         }
-        console.log(inputString);
         if (document.getElementById('inputString').value !== '') {
             this.props.addItem(inputString);
             document.getElementById('inputString').value = '';

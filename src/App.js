@@ -1,20 +1,15 @@
 import React from 'react';
 import './App.css';
-import TodoInput from './components/TodoInput'
-import TodoList from './components/TodoList';
+import AllTodoList from './components/AllTodoList';
+import { HashRouter, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <table border="1">
-          <thead>
-            <tr><th><TodoInput /></th></tr>
-          </thead>
-          <tbody>
-            <tr><td><TodoList /></td></tr>
-          </tbody>
-        </table>
+        <HashRouter>
+          <Route exact path="/" component={AllTodoList}/>
+        </HashRouter>
       </header>
     </div>
   );
