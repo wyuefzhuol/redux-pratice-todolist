@@ -7,8 +7,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TodoInput />
-        <TodoList />
+        <table border="1">
+          <thead>
+            <tr><th><TodoInput /></th></tr>
+          </thead>
+          <tbody>
+            <tr><td><TodoList /></td></tr>
+          </tbody>
+        </table>
       </header>
     </div>
   );
