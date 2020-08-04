@@ -10,7 +10,7 @@ class TodoList extends Component {
                     <tr><th><label>Todo</label></th></tr>
                 </thead>
                 <tbody>
-                    { this.props.stringList.map((item, index) => 
+                    { this.props.stringList.filter((item, index) => item.isDo === true).map((item, index) => 
                     <tr key={index}><td key={index}><TodoItem stringItem={item} stringIndex={index} key={index}/></td></tr>) }
                 </tbody>
             </table>

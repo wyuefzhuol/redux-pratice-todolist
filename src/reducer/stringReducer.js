@@ -2,7 +2,7 @@ import { ADD_STRING, DELETE_STRING, MAKE_TODO } from '../action/actionTypes'
 import { createReducer } from '@reduxjs/toolkit'
 
 const initializeState = {
-    stringList: []
+    stringList: [],
 }
 
 export default createReducer (initializeState, {

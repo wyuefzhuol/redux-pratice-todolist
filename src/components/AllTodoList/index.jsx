@@ -9,7 +9,7 @@ class AllTodoList extends Component {
           <tr><th><TodoInput /></th></tr>
         </thead>
         <tbody>
-          <tr><td><TodoList /></td></tr>
+          <tr><td><TodoList/></td></tr>
         </tbody>
       </table>)
     }
