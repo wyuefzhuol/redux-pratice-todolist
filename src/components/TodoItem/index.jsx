@@ -10,11 +10,20 @@ class TodoItem extends Component {
         Axios.delete(deleteUrl).then(function (response) {
             _this.props.deleteItem(_this.props.stringIndex)
             alert(response.data.content+'删除成功！')
+        }).catch(function (error) {
+            alert(error)
         })
     }
 
     makeTodo = () => {
-        this.props.makeTodo(this.props.stringIndex);
+        const _this = this
+        const putUrl = 'https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.stringItem.id
+        Axios.put(putUrl, { status: !this.props.stringItem.status }).then(function (response) {
+            _this.props.makeTodo(_this.props.stringIndex);
+            alert('状态改变！')
+        }).catch(function (error) {
+            alert(error)
+        })
     }
 
     render() {
