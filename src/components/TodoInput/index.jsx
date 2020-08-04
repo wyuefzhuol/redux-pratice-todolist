@@ -4,8 +4,12 @@ import { connect } from 'react-redux'
 
 class TodoInput extends Component {
     addItem = () => {
-        let inputString = document.getElementById('inputString').value;
-        if (inputString !== '') {
+        let inputString = {
+            todoText: document.getElementById('inputString').value,
+            isdo: false
+        }
+        console.log(inputString);
+        if (document.getElementById('inputString').value !== '') {
             this.props.addItem(inputString);
             document.getElementById('inputString').value = '';
         } else {
