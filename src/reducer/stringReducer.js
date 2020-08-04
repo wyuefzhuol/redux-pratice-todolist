@@ -6,5 +6,5 @@ const initializeState = {
 }
 
 export default createReducer (initializeState, {
-    [ADD_STRING]: ((state, action) => ({ stringList: state.stringList.push(action.payload.string) }))
+    [ADD_STRING]: ((state, action) => ({ stringList: [...state.stringList,action.payload.string] }))
 })
