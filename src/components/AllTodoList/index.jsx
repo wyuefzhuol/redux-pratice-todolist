@@ -50,14 +50,10 @@ class AllTodoList extends Component {
     }
 
     render() {
-        return (<table border="1">
-        <thead>
-          <tr><th><TodoInput addItem={this.addItem} /></th></tr>
-        </thead>
-        <tbody>
-          <tr><td><TodoList stringList={this.props.stringList} deleteItem={this.deleteItem} makeTodo={this.makeTodo} /></td></tr>
-        </tbody>
-      </table>)
+        return (<div>
+          <TodoInput addItem={this.addItem} />
+          <TodoList stringList={this.props.stringList} deleteItem={this.deleteItem} makeTodo={this.makeTodo} />
+        </div>)
     }
 }
 

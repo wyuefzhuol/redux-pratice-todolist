@@ -1,20 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Input, Divider } from 'antd';
 
 class TodoInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputString: '',
-        };
-    }
-
-    inputTodoContent = (event) => {
-        this.setState({ inputString: event.target.value });
-    }
-
-    addItem = () => { 
+    addItem = (value) => {
         const inputString = {
-            content: this.state.inputString,
+            content: value,
             status: false
         }
         this.props.addItem(inputString);
@@ -23,9 +13,13 @@ class TodoInput extends Component {
 
     render() {
         return (<div>
-            <label>请输入要添加的内容：</label>
-            <input id="inputString" onChange={this.inputTodoContent}/>
-            <button onClick={this.addItem}>add</button>
+            <Divider orientation="left">Add Todo</Divider>
+            <Input.Search
+                placeholder="what do you want to do"
+                enterButton="add"
+                size="large"
+                onSearch={value => this.addItem(value)}
+            />
         </div>)
     }
 }

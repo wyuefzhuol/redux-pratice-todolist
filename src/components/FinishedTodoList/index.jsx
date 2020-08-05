@@ -1,18 +1,20 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import TodoItem from '../TodoItem'
+import { List, Divider } from 'antd';
 
 class FinishedTodoList extends Component {
     render() {
         return (<div>
-            <table border="1" width="100%">
-                <thead>
-                    <tr><th><label>Todo</label></th></tr>
-                </thead>
-                <tbody>
-                    { this.props.stringList.filter((item, index) => item.status === true).map((item, index) => 
-                    <tr key={index}><td key={index}><TodoItem stringItem={item} stringIndex={index} key={index}/></td></tr>) }
-                </tbody>
-            </table>
+            <Divider orientation="left">Finished Todo List</Divider>
+            <List
+                bordered
+                dataSource={this.props.stringList}
+                renderItem={(item, index) => (
+                    <TodoItem  deleteItem={this.props.deleteItem}
+                        makeTodo={this.props.makeTodo}
+                        stringItem={item} stringIndex={index} key={index} />
+                )}
+            />
         </div>)
     }
 }
