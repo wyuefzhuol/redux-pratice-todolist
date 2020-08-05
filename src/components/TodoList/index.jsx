@@ -1,6 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import TodoItem from '../TodoItem'
-import { connect } from 'react-redux'
 
 class TodoList extends Component {
     render() {
@@ -10,18 +9,14 @@ class TodoList extends Component {
                     <tr><th><label>Todo</label></th></tr>
                 </thead>
                 <tbody>
-                    { this.props.stringList.map((item, index) => 
-                    <tr key={index}><td key={index}><TodoItem stringItem={item} stringIndex={index} key={index}/></td></tr>) }
+                    {this.props.stringList.map((item, index) =>
+                        <tr key={index}><td key={index}><TodoItem deleteItem={this.props.deleteItem}
+                            makeTodo={this.props.makeTodo}
+                            stringItem={item} stringIndex={index} key={index} /></td></tr>)}
                 </tbody>
             </table>
         </div>)
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        stringList: state.stringReducer.stringList
-    }
-}
-
-export default connect(mapStateToProps, null)(TodoList);
+export default TodoList;

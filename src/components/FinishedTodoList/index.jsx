@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import TodoItem from '../TodoItem'
-import { connect } from 'react-redux'
 
-class TodoList extends Component {
+class FinishedTodoList extends Component {
     render() {
         return (<div>
             <table border="1" width="100%">
@@ -18,10 +17,4 @@ class TodoList extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        stringList: state.stringReducer.stringList
-    }
-}
-
-export default connect(mapStateToProps, null)(TodoList);
+export default FinishedTodoList;
