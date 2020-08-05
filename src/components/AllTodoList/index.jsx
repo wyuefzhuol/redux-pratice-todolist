@@ -3,7 +3,8 @@ import TodoInput from '../TodoInput';
 import TodoList from '../TodoList';
 import { getTodoList, addItemAction, deleteItemAction, makeTodoAction } from '../../action/addItemAction';
 import { connect } from 'react-redux';
-import { AxiosRequest } from '../../request/AxiosRequest'
+import AxiosRequest from '../../request/AxiosRequest';
+import { Spin } from 'antd';
 
 class AllTodoList extends Component {
     componentDidMount() {
@@ -31,18 +32,18 @@ class AllTodoList extends Component {
       }
     }
 
-    deleteItem = (id, index) => {
+    deleteItem = (id) => {
         AxiosRequest.delete('/'+id).then((response) => {
-            this.props.delete(index)
+            this.props.delete(id)
             alert(response.data.content+'删除成功！')
         }).catch((error) => {
             alert(error)
         })
     }
 
-    makeTodo = (id, status, index) => {
+    makeTodo = (id, status) => {
         AxiosRequest.put('/'+id, { status: !status }).then((response) => {
-            this.props.updateStatus(index)
+            this.props.updateStatus(id)
             //alert('状态改变！')
         }).catch((error) => {
             alert(error)
@@ -51,15 +52,18 @@ class AllTodoList extends Component {
 
     render() {
         return (<div>
+          <Spin spinning={this.props.loading}>
           <TodoInput addItem={this.addItem} />
           <TodoList stringList={this.props.stringList} deleteItem={this.deleteItem} makeTodo={this.makeTodo} />
+          </Spin>
         </div>)
     }
 }
 
 const mapStateToProps = (state) => {
   return {
-      stringList: state.stringReducer.stringList
+      stringList: state.stringReducer.stringList,
+      loading: state.loadingReducer.loading
   }
 }
 

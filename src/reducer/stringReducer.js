@@ -7,9 +7,9 @@ const initializeState = {
 
 export default createReducer (initializeState, {
     [ADD_STRING]: ((state, action) => ({ stringList: [...state.stringList, action.payload.todoObject] })),
-    [DELETE_STRING]: ((state, action) => ({ stringList: state.stringList.filter((item, index) => index !== action.payload.index) })),
+    [DELETE_STRING]: ((state, action) => ({ stringList: state.stringList.filter((item, index) => item.id !== action.payload.id) })),
     [MAKE_TODO]: ((state, action) => ({ stringList: state.stringList.map((item, index) => {
-        if (index === action.payload.index) {
+        if (item.id === action.payload.id) {
             return {...item, status:!item.status}
         }
         return item;
