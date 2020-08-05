@@ -4,6 +4,7 @@ import { deleteItemAction, makeTodoAction } from '../../action/addItemAction'
 import Axios from 'axios';
 
 class TodoItem extends Component {
+    //TODO: 提到父组件
     deleteItem = () => {
         const _this = this
         const deleteUrl = 'https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.stringItem.id
@@ -15,12 +16,14 @@ class TodoItem extends Component {
         })
     }
 
+    //TODO: 提到父组件
     makeTodo = () => {
-        const _this = this
+        //TODO: url可以提出来
         const putUrl = 'https://5e9ec500fb467500166c4658.mockapi.io/todos/'+this.props.stringItem.id
-        Axios.put(putUrl, { status: !this.props.stringItem.status }).then(function (response) {
-            _this.props.makeTodo(_this.props.stringIndex);
-            alert('状态改变！')
+        //TODO: 里面用箭头函数
+        Axios.put(putUrl, { status: !this.props.stringItem.status }).then((response) => {
+            this.props.makeTodo(this.props.stringIndex);
+            //alert('状态改变！')
         }).catch(function (error) {
             alert(error)
         })

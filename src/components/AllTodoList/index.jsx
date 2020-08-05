@@ -10,7 +10,6 @@ class AllTodoList extends Component {
       const _this = this
       Axios.get('https://5e9ec500fb467500166c4658.mockapi.io/todos')
       .then(function (response) {
-        console.log(response.data)
         _this.props.getTodoList(response.data)
       })
       .catch(function (error) {
@@ -18,6 +17,7 @@ class AllTodoList extends Component {
       })
     }
 
+    //TODO: 把子组件的函数传入
     render() {
         return (<table border="1">
         <thead>
