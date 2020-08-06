@@ -4,18 +4,23 @@ import AllTodoList from './components/AllTodoList';
 import { HashRouter, Route } from 'react-router-dom';
 import AllFinishedTodoList from './components/AllFinishedTodoList';
 import TodoMenu from './components/TodoMenu';
-import { Row, Col } from 'antd';
+import { Row, Col, Spin } from 'antd';
+import { connect } from 'react-redux';
 
-function App() {
-  return (<Row>
-    <Col span={10} offset={7}>
-      <HashRouter>
-        <TodoMenu />
-        <Route exact path="/" component={AllTodoList}/>
-        <Route path="/finished" component={AllFinishedTodoList}/>
-      </HashRouter>
-    </Col>
-  </Row>);
+function App(props) {
+  return (<Spin spinning={props.loading}>
+    <Row>
+      <Col span={10} offset={7}>
+        <HashRouter>
+          <TodoMenu />
+          <Route exact path="/" component={AllTodoList}/>
+          <Route path="/finished" component={AllFinishedTodoList}/>
+        </HashRouter>
+      </Col>
+    </Row>
+  </Spin>);
 }
 
-export default App;
+const mapStateToProps = (state) => ({ loading: state.loadingReducer.loading })
+
+export default connect(mapStateToProps, null)(App);

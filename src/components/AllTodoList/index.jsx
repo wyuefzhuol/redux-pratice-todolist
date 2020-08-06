@@ -4,7 +4,6 @@ import TodoList from '../TodoList';
 import { getTodoList, addItemAction, deleteItemAction, makeTodoAction } from '../../action/addItemAction';
 import { connect } from 'react-redux';
 import AxiosRequest from '../../request/AxiosRequest';
-import { Spin } from 'antd';
 
 class AllTodoList extends Component {
     componentDidMount() {
@@ -51,19 +50,17 @@ class AllTodoList extends Component {
     }
 
     render() {
+        console.log("11111")
         return (<div>
-          <Spin spinning={this.props.loading}>
           <TodoInput addItem={this.addItem} />
           <TodoList stringList={this.props.stringList} deleteItem={this.deleteItem} makeTodo={this.makeTodo} />
-          </Spin>
         </div>)
     }
 }
 
 const mapStateToProps = (state) => {
   return {
-      stringList: state.stringReducer.stringList,
-      loading: state.loadingReducer.loading
+      stringList: state.stringReducer.stringList
   }
 }
 

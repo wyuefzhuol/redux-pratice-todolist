@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, Divider } from 'antd';
 
+//TODO: input框输入后要清空
 class TodoInput extends Component {
     addItem = (value) => {
         const inputString = {

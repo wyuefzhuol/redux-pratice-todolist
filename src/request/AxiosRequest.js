@@ -3,7 +3,7 @@ import store from '../store';
 import { LOADING_TOGGLE } from '../action/actionTypes';
 
 const AxiosRequest = Axios.create({
-    baseURL:"https://5e9ec500fb467500166c4658.mockapi.io/todos"
+    baseURL:"http://localhost:8090/todos"
  });
 
 AxiosRequest.interceptors.request.use(req => {

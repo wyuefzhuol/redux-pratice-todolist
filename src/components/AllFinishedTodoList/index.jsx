@@ -3,7 +3,6 @@ import FinishedTodoList from '../FinishedTodoList';
 import { connect } from 'react-redux';
 import AxiosRequest from '../../request/AxiosRequest';
 import { deleteItemAction, makeTodoAction } from '../../action/addItemAction';
-import { Spin } from 'antd';
 
 class AllFinishedTodoList extends Component {
     deleteItem = (id) => {
@@ -25,16 +24,15 @@ class AllFinishedTodoList extends Component {
     }
 
     render() {
-        return (<Spin spinning={this.props.loading}>
+        return (
             <FinishedTodoList stringList={this.props.stringList} deleteItem={this.deleteItem} makeTodo={this.makeTodo}/>
-          </Spin>)
+        )
     }
 }
 
 const mapStateToProps = (state) => {
   return {
-      stringList: state.stringReducer.stringList.filter((item, index) => item.status === true),
-      loading: state.loadingReducer.loading
+      stringList: state.stringReducer.stringList.filter((item, index) => item.status === true)
   }
 }
 
